@@ -1,15 +1,12 @@
 <?php
-
 require_once 'Implementations/QueuePushShift.php';
 require_once 'Implementations/QueueSimple.php';
-require_once 'Implementations/StackPushPop.php';
-require_once 'Implementations/StackSimple.php';
 
-//$queue = new QueuePushShift();
-$stack = new StackSimple();
+//$queue = new QueueSimple();
+$queue = new QueuePushShift();
 
 for ($i = 0;$i <5;$i++) {
-    $stack->push($i);
+    $queue->enqueue($i);
 //    echo "SIZE: ". $queue->size() . " ELEMENT TOP: " . $queue->top() . PHP_EOL;
 }
 
@@ -17,6 +14,6 @@ for ($i = 0;$i <5;$i++) {
 //for ($i = 0;$i <200;$i++) {
 ////    echo "SIZE: ". $queue->size() . " ELEMENT TOP: " . $queue->top() ." ELEMENT: " . $queue->pop() . PHP_EOL;
 //}
-while (!$stack->empty()) {
-    echo $stack->pop() . PHP_EOL;
+while (!$queue->empty()) {
+    echo $queue->dequeue() . PHP_EOL;
 }
