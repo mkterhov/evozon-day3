@@ -23,9 +23,9 @@ class SetFunctions extends AbstractSet
         return new SetFunctions(array_intersect($this->getData(), $set->getData()));
     }
 
-    public function reunion(SetInterface $set): SetInterface
+    public function union(SetInterface $set): SetInterface
     {
-        $resultSet = array_unique(array_merge($this->getData(), $set->getData()));
+        $resultSet = array_values(array_unique(array_merge($this->getData(), $set->getData())));
         return new SetFunctions($resultSet);
     }
 

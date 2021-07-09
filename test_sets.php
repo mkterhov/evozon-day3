@@ -23,5 +23,5 @@ for ($i = 0; $i < 15; $i++) {
 //var_dump($set1->getData());
 //var_dump($set2->getData());
 //var_dump($set1->intersection($set2)->getData());
-$set3 = $set1->reunion($set2);
-var_dump(count($set3));
+$set3 = $set1->union($set2);
+var_dump($set3);

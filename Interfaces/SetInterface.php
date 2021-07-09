@@ -18,7 +18,7 @@ interface SetInterface extends \Countable
 
     public function intersection(self $set): self;
 
-    public function reunion(self $set): self;
+    public function union(self $set): self;
 
     public function getData();
 
