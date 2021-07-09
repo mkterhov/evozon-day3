@@ -5,14 +5,15 @@ require_once __DIR__ . "/AbstractSet.php";
 
 class SetFunctions extends AbstractSet
 {
-    public function add($element)
+    public function add($element): void
     {
-        if (!$this->exists($element)) {
-            array_push($this->data, $element);
+        if ($this->contains($element)) {
+            throw new ElementExists('Element already exists in the set!');
         }
+        array_push($this->data, $element);
     }
 
-    public function exists($element): bool
+    public function contains($element): bool
     {
         return in_array($element, $this->data);
     }
@@ -24,6 +25,12 @@ class SetFunctions extends AbstractSet
 
     public function reunion(SetInterface $set): SetInterface
     {
-        return new SetFunctions(array_merge($this->getData(), $set->getData()));
+        $resultSet = array_unique(array_merge($this->getData(), $set->getData()));
+        return new SetFunctions($resultSet);
+    }
+
+    public function count(): int
+    {
+        return count($this->data);
     }
 }

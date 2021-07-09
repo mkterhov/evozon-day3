@@ -5,15 +5,22 @@
 //- sets intersection obtaining a third one with common values
 //- sets reunion obtaining a third one with all values
 
-interface SetInterface
+interface SetInterface extends \Countable
 {
-    public function add($element);
+    /**
+     * @throws ElementExists
+     * @param $element
+     * @return mixed
+     */
+    public function add($element): void;
 
-    public function exists($element): bool;
+    public function contains($element): bool;
 
     public function intersection(self $set): self;
 
     public function reunion(self $set): self;
 
     public function getData();
+
+    public function count(): int;
 }

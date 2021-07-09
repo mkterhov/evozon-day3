@@ -7,9 +7,7 @@ class Queue extends AbstractQueue
 
     public function enqueue($element)
     {
-
         $this->data[] = $element;
-
     }
 
     public function dequeue()
