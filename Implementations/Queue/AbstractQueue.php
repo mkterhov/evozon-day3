@@ -1,15 +1,12 @@
 <?php
 define('__ROOT__', dirname(dirname(dirname(__FILE__))));
 
-require_once __ROOT__ . '/Interfaces/Queue.php';
+require_once __ROOT__ . '/Interfaces/QueueInterface.php';
 
-abstract class AbstractQueue implements Queue
+abstract class AbstractQueue implements QueueInterface
 {
     protected array $data;
 
-    /**
-     * AbstractQueue constructor.
-     */
     public function __construct()
     {
         $this->data = array();
@@ -18,11 +15,6 @@ abstract class AbstractQueue implements Queue
     public function size(): int
     {
         return count($this->data);
-    }
-
-    public function empty(): bool
-    {
-        return $this->size() === 0;
     }
 
     public function top()

@@ -1,8 +1,10 @@
 <?php
 
+use JetBrains\PhpStorm\Pure;
+
 require_once __DIR__ . "/AbstractStack.php";
 
-class StackSimple extends AbstractStack
+class Stack extends AbstractStack
 {
     public function push($element)
     {
@@ -11,12 +13,18 @@ class StackSimple extends AbstractStack
 
     public function pop()
     {
-        if(!$this->empty()) {
-            $top = $this->data[$this->size()-1];
-            unset($this->data[$this->size()-1]);
+        if (!$this->empty()) {
+            $top = $this->data[$this->size() - 1];
+            unset($this->data[$this->size() - 1]);
             $this->data = array_values($this->data);
             return $top;
         }
         return null;
     }
+
+    public function empty(): bool
+    {
+        return $this->size() == 0;
+    }
+
 }

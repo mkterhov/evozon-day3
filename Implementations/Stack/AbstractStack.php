@@ -1,16 +1,12 @@
 <?php
 define('__ROOT__', dirname(dirname(dirname(__FILE__))));
 
-require_once __ROOT__ . '/Interfaces/Stack.php';
+require_once __ROOT__ . '/Interfaces/StackInterface.php';
 
-abstract class AbstractStack implements Stack
+abstract class AbstractStack implements StackInterface
 {
-
     protected array $data;
 
-    /**
-     * AbstractQueue constructor.
-     */
     public function __construct()
     {
         $this->data = array();
@@ -21,18 +17,8 @@ abstract class AbstractStack implements Stack
         return count($this->data);
     }
 
-    public function empty(): bool
-    {
-        return $this->size() === 0;
-    }
-
     public function top()
     {
         return end($this->data) ?? null;
     }
-
-    abstract public function push($element);
-
-    abstract public function pop();
-
 }

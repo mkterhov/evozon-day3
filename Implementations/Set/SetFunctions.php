@@ -7,23 +7,23 @@ class SetFunctions extends AbstractSet
 {
     public function add($element)
     {
-        if(!$this->exists($element)) {
-            array_push($this->data,$element);
+        if (!$this->exists($element)) {
+            array_push($this->data, $element);
         }
     }
 
     public function exists($element): bool
     {
-        return in_array($element,$this->data);
+        return in_array($element, $this->data);
     }
 
-    public function intersection($set): SetFunctions
+    public function intersection(SetInterface $set): SetInterface
     {
-        return new SetFunctions(array_intersect($this->getData(),$set->getData()));
+        return new SetFunctions(array_intersect($this->getData(), $set->getData()));
     }
 
-    public function reunion($set): SetFunctions
+    public function reunion(SetInterface $set): SetInterface
     {
-        return new SetFunctions(array_merge($this->getData(),$set->getData()));
+        return new SetFunctions(array_merge($this->getData(), $set->getData()));
     }
 }

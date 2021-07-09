@@ -1,9 +1,9 @@
 <?php
-require_once './Implementations/Queue/QueuePushShift.php';
-require_once './Implementations/Queue/QueueSimple.php';
+require_once './Implementations/Queue/QueueFunctions.php';
+require_once './Implementations/Queue/Queue.php';
 
-//$queue = new QueueSimple();
-$queue = new QueuePushShift();
+//$queue = new Queue();
+$queue = new QueueFunctions();
 
 for ($i = 0;$i <5;$i++) {
     $queue->enqueue($i);

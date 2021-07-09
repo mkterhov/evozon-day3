@@ -1,11 +1,13 @@
 <?php
 
 /**
- * Interface Queue
+ * Interface QueueInterface
  */
-interface Queue
+interface QueueInterface
 {
     public function enqueue($element);
+
     public function dequeue();
+
     public function empty(): bool;
 }

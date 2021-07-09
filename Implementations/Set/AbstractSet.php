@@ -1,9 +1,9 @@
 <?php
 define('__ROOT__', dirname(dirname(dirname(__FILE__))));
 
-require_once __ROOT__ . '/Interfaces/Set.php';
+require_once __ROOT__ . '/Interfaces/SetInterface.php';
 
-abstract class AbstractSet implements Set
+abstract class AbstractSet implements SetInterface
 {
     public array $data;
 
@@ -16,12 +16,4 @@ abstract class AbstractSet implements Set
     {
         return $this->data;
     }
-
-    abstract public function add($element);
-
-    abstract public function exists($element): bool;
-
-    abstract public function intersection(Set $set): Set;
-
-    abstract public function reunion(Set $set): Set;
 }

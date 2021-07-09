@@ -1,9 +1,11 @@
 <?php
 
 //push and pop, empty as operations
-interface Stack
+interface StackInterface
 {
     public function push($element);
+
     public function pop();
+
     public function empty(): bool;
 }

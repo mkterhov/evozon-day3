@@ -1,10 +1,10 @@
 <?php
 
-require_once 'Implementations/Stack/StackPushPop.php';
-require_once 'Implementations/Stack/StackSimple.php';
+require_once 'Implementations/Stack/StackFunctions.php';
+require_once 'Implementations/Stack/Stack.php';
 
-//$queue = new StackPushPop();
-$stack = new StackSimple();
+//$queue = new StackFunctions();
+$stack = new Stack();
 
 for ($i = 0;$i <5;$i++) {
     $stack->push($i);

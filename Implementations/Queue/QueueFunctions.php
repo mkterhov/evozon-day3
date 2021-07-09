@@ -2,7 +2,7 @@
 
 require_once __DIR__ . "/AbstractQueue.php";
 
-class QueuePushShift extends AbstractQueue
+class QueueFunctions extends AbstractQueue
 {
 
     public function enqueue($element)
@@ -12,9 +12,14 @@ class QueuePushShift extends AbstractQueue
 
     public function dequeue()
     {
-        if(!$this->empty()) {
+        if (!$this->empty()) {
             return array_shift($this->data);
         }
         return false;
+    }
+
+    public function empty(): bool
+    {
+        return empty($this->data);
     }
 }
