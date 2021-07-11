@@ -1,8 +1,6 @@
 <?php
 require_once 'Iterator/NumberGenerator.php';
 
-$new = new NumberGenerator();
-
-foreach (NumberGenerator::generateNumbers(10) as $item) {
-    echo $item . PHP_EOL;
-}
+$numberGenerator = new NumberGenerator();
+$numbersToGenerate = 5;
+$numberGenerator->printIterable($numberGenerator->generateNumbers($numbersToGenerate));
