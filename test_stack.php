@@ -1,10 +1,11 @@
 <?php
+require_once 'vendor/autoload.php';
 
-require_once 'Implementations/Stack/StackFunctions.php';
-require_once 'Implementations/Stack/Stack.php';
+use Implementations\Stack\Stack;
 
 //$queue = new StackFunctions();
 $stack = new Stack();
+
 
 for ($i = 0;$i <5;$i++) {
     $stack->push($i);

@@ -1,7 +1,8 @@
 <?php
-define('__ROOT__', dirname(dirname(dirname(__FILE__))));
 
-require_once __ROOT__ . '/Interfaces/StackInterface.php';
+namespace Implementations\Stack;
+
+use Interfaces\StackInterface;
 
 abstract class AbstractStack implements StackInterface
 {
@@ -9,7 +10,7 @@ abstract class AbstractStack implements StackInterface
 
     public function __construct()
     {
-        $this->data = array();
+        $this->data = [];
     }
 
     public function size(): int

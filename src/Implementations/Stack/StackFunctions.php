@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . "/AbstractStack.php";
+namespace Implementations\Stack;
 
 class StackFunctions extends AbstractStack
 {

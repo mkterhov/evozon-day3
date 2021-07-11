@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . "/AbstractQueue.php";
+namespace Implementations\Queue;
 
 class QueueFunctions extends AbstractQueue
 {

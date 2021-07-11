@@ -1,8 +1,6 @@
 <?php
 
-use JetBrains\PhpStorm\Pure;
-
-require_once __DIR__ . "/AbstractStack.php";
+namespace Implementations\Stack;
 
 class Stack extends AbstractStack
 {

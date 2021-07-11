@@ -1,8 +1,7 @@
 <?php
-define('__ROOT__', dirname(dirname(dirname(__FILE__))));
+namespace Implementations\Set;
 
-require_once __ROOT__ . '/Interfaces/SetInterface.php';
-require_once __ROOT__ . '/Exceptions/ElementExists.php';
+use Interfaces\SetInterface;
 
 abstract class AbstractSet implements SetInterface
 {

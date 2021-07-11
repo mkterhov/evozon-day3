@@ -1,6 +1,8 @@
 <?php
-require_once './Implementations/Queue/QueueFunctions.php';
-require_once './Implementations/Queue/Queue.php';
+
+use Implementations\Queue\QueueFunctions;
+
+require "vendor/autoload.php";
 
 //$queue = new Queue();
 $queue = new QueueFunctions();

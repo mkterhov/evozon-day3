@@ -1,5 +1,7 @@
 <?php
 
+namespace Interfaces;
+
 //- adding a value to the set
 //- checking if value in set
 //- sets intersection obtaining a third one with common values

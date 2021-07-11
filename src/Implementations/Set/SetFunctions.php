@@ -1,10 +1,15 @@
 <?php
 
-require_once __DIR__ . "/AbstractSet.php";
+namespace Implementations\Set;
 
+use Exceptions\ElementExists;
+use Interfaces\SetInterface;
 
 class SetFunctions extends AbstractSet
 {
+    /**
+     * @throws ElementExists
+     */
     public function add($element): void
     {
         if ($this->contains($element)) {

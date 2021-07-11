@@ -1,5 +1,7 @@
 <?php
 
+namespace Interfaces;
+
 /**
  * Interface QueueInterface
  */

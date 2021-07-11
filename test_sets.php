@@ -1,8 +1,6 @@
 <?php
 
-
-require_once 'Implementations/Set/SetFunctions.php';
-require_once 'Implementations/Set/Set.php';
+require "vendor/autoload.php";
 
 //$set1 = new SetFunctions();
 //$set2 = new SetFunctions();

@@ -1,25 +1,21 @@
 <?php
 
-require_once __DIR__ . "/AbstractSet.php";
+namespace Implementations\Set;
+
+use Exceptions\ElementExists;
+use Interfaces\SetInterface;
 
 class Set extends AbstractSet
 {
 
-    private int $count;
-
     public function __construct(array $data = [])
     {
         parent::__construct($data);
-        $this->count = count($this->data);
-    }
-
-    private function incrementCount(): void
-    {
-        $this->count++;
     }
 
     /**
      * @inheritDoc
+     * @throws ElementExists
      */
     public function add($element): void
     {
@@ -27,7 +23,6 @@ class Set extends AbstractSet
             throw new ElementExists(self::ELEMENT_EXISTS);
         }
         $this->data[] = $element;
-        $this->incrementCount();
     }
 
     public function contains($element): bool
@@ -45,7 +40,7 @@ class Set extends AbstractSet
      */
     public function intersection(SetInterface $set): SetInterface
     {
-        $newSet = new SetFunctions();
+        $newSet = new Set();
         foreach ($this->data as $element) {
             if ($this->contains($element) && $set->contains($element)) {
                 $newSet->add($element);
@@ -59,7 +54,7 @@ class Set extends AbstractSet
      */
     public function union(SetInterface $set): SetInterface
     {
-        $newSet = new SetFunctions($this->intersection($set)->getData());
+        $newSet = new Set($this->intersection($set)->getData());
         foreach ($this->data as $element) {
             if ((!$set->contains($element))) {
                 $newSet->add($element);
@@ -75,6 +70,6 @@ class Set extends AbstractSet
 
     public function count(): int
     {
-        return $this->count;
+        return count($this->data);
     }
 }

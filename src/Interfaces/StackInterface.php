@@ -1,5 +1,7 @@
 <?php
 
+namespace Interfaces;
+
 //push and pop, empty as operations
 interface StackInterface
 {

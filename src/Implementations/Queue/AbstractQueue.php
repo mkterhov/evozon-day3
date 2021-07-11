@@ -1,7 +1,8 @@
 <?php
-define('__ROOT__', dirname(dirname(dirname(__FILE__))));
 
-require_once __ROOT__ . '/Interfaces/QueueInterface.php';
+namespace Implementations\Queue;
+
+use Interfaces\QueueInterface;
 
 abstract class AbstractQueue implements QueueInterface
 {
