@@ -2,9 +2,13 @@
 
 
 require_once 'Implementations/Set/SetFunctions.php';
+require_once 'Implementations/Set/Set.php';
 
-$set1 = new SetFunctions();
-$set2 = new SetFunctions();
+//$set1 = new SetFunctions();
+//$set2 = new SetFunctions();
+
+$set1 = new Set();
+$set2 = new Set();
 
 for ($i = 0; $i < 5; $i++) {
     try {
@@ -13,7 +17,7 @@ for ($i = 0; $i < 5; $i++) {
         echo 'whoops! ' . $e->getMessage() . PHP_EOL;
     }
 }
-for ($i = 0; $i < 15; $i++) {
+for ($i = 0; $i < 10; $i++) {
     try {
         $set2->add($i);
     } catch (ElementExists $e) {
@@ -22,6 +26,14 @@ for ($i = 0; $i < 15; $i++) {
 }
 //var_dump($set1->getData());
 //var_dump($set2->getData());
-//var_dump($set1->intersection($set2)->getData());
-$set3 = $set1->union($set2);
-var_dump($set3);
+try {
+    $set1->intersection($set2)->getData();
+} catch (\Exception $e) {
+    var_dump($e);
+}
+try {
+    $set3 = $set1->union($set2);
+    var_dump($set3);
+} catch (\Exception $e) {
+    var_dump($e);
+}

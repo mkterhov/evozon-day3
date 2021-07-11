@@ -6,6 +6,8 @@ require_once __ROOT__ . '/Exceptions/ElementExists.php';
 
 abstract class AbstractSet implements SetInterface
 {
+    const ELEMENT_EXISTS = 'Element already exists in the set!';
+
     protected array $data;
 
     public function __construct(array $data = [])
@@ -20,6 +22,6 @@ abstract class AbstractSet implements SetInterface
 
     public function showData(): void
     {
-        print("<pre>".print_r($this->getData(),true)."</pre>");
+       print_r($this->getData(),true);
     }
 }

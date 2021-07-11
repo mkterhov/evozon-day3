@@ -8,7 +8,7 @@ class SetFunctions extends AbstractSet
     public function add($element): void
     {
         if ($this->contains($element)) {
-            throw new ElementExists('Element already exists in the set!');
+            throw new ElementExists(self::ELEMENT_EXISTS);
         }
         array_push($this->data, $element);
     }
