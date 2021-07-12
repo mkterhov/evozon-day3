@@ -1,10 +1,11 @@
 <?php
+require_once 'vendor/autoload.php';
 
-require_once 'Implementations/Stack/StackFunctions.php';
-require_once 'Implementations/Stack/Stack.php';
+use Implementations\Stack\Stack;
 
 //$queue = new StackFunctions();
 $stack = new Stack();
+
 
 for ($i = 0;$i <5;$i++) {
     $stack->push($i);
@@ -15,6 +16,6 @@ for ($i = 0;$i <5;$i++) {
 //for ($i = 0;$i <200;$i++) {
 ////    echo "SIZE: ". $queue->size() . " ELEMENT TOP: " . $queue->top() ." ELEMENT: " . $queue->pop() . PHP_EOL;
 //}
-while (!$stack->empty()) {
+while (!$stack->isEmpty()) {
     echo $stack->pop() . PHP_EOL;
 }

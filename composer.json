@@ -1,0 +1,14 @@
+{
+    "name": "michael/evozon-day3",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Michael",
+            "email": "michael.terhovhannisyan@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"": "src/"}
+    },
+    "require": {}
+}

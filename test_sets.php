@@ -1,11 +1,10 @@
 <?php
 
+use Exceptions\ElementExistsException;
+use Implementations\Set\Set;
 
-require_once 'Implementations/Set/SetFunctions.php';
-require_once 'Implementations/Set/Set.php';
+require "vendor/autoload.php";
 
-//$set1 = new SetFunctions();
-//$set2 = new SetFunctions();
 
 $set1 = new Set();
 $set2 = new Set();
@@ -13,27 +12,26 @@ $set2 = new Set();
 for ($i = 0; $i < 5; $i++) {
     try {
         $set1->add($i);
-    } catch (ElementExists $e) {
+    } catch (ElementExistsException $e) {
         echo 'whoops! ' . $e->getMessage() . PHP_EOL;
     }
 }
+
 for ($i = 0; $i < 10; $i++) {
     try {
         $set2->add($i);
-    } catch (ElementExists $e) {
+    } catch (ElementExistsException $e) {
         echo 'whoops! ' . $e->getMessage() . PHP_EOL;
     }
 }
-//var_dump($set1->getData());
-//var_dump($set2->getData());
+
 try {
-    $set1->intersection($set2)->getData();
+    $set1->intersection($set2);
 } catch (\Exception $e) {
-    var_dump($e);
+    echo $e->getMessage() . PHP_EOL;
 }
 try {
     $set3 = $set1->union($set2);
-    var_dump($set3);
 } catch (\Exception $e) {
-    var_dump($e);
+    echo $e->getMessage() . PHP_EOL;
 }

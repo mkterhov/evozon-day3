@@ -1,33 +1,33 @@
 <?php
 
-require_once __DIR__ . "/AbstractSet.php";
+namespace Implementations\Set;
 
-class Set extends AbstractSet
+use Exceptions\ElementExistsException;
+use Interfaces\SetInterface;
+
+class Set implements SetInterface
 {
-
-    private int $count;
+    protected array $data;
 
     public function __construct(array $data = [])
     {
-        parent::__construct($data);
-        $this->count = count($this->data);
+        $this->data = $data;
     }
 
-    private function incrementCount(): void
+    public function getData(): array
     {
-        $this->count++;
+        return $this->data;
     }
 
     /**
-     * @inheritDoc
+     * @throws ElementExistsException
      */
     public function add($element): void
     {
         if ($this->contains($element)) {
-            throw new ElementExists(self::ELEMENT_EXISTS);
+            throw new ElementExistsException('Element already exists in the set!');
         }
         $this->data[] = $element;
-        $this->incrementCount();
     }
 
     public function contains($element): bool
@@ -41,11 +41,11 @@ class Set extends AbstractSet
     }
 
     /**
-     * @throws ElementExists
+     * @throws ElementExistsException
      */
-    public function intersection(SetInterface $set): SetInterface
+    public function intersection($set): self
     {
-        $newSet = new SetFunctions();
+        $newSet = new self();
         foreach ($this->data as $element) {
             if ($this->contains($element) && $set->contains($element)) {
                 $newSet->add($element);
@@ -55,17 +55,17 @@ class Set extends AbstractSet
     }
 
     /**
-     * @throws ElementExists
+     * @throws ElementExistsException
      */
-    public function union(SetInterface $set): SetInterface
+    public function union($set): self
     {
-        $newSet = new SetFunctions($this->intersection($set)->getData());
+        $newSet = new self($this->intersection($set)->data);
         foreach ($this->data as $element) {
             if ((!$set->contains($element))) {
                 $newSet->add($element);
             }
         }
-        foreach ($set->getData() as $element) {
+        foreach ($set->data as $element) {
             if ((!$this->contains($element))) {
                 $newSet->add($element);
             }
@@ -75,6 +75,6 @@ class Set extends AbstractSet
 
     public function count(): int
     {
-        return $this->count;
+        return count($this->data);
     }
 }

@@ -1,11 +1,23 @@
 <?php
 
-use JetBrains\PhpStorm\Pure;
+namespace Implementations\Stack;
 
-require_once __DIR__ . "/AbstractStack.php";
+use Interfaces\StackInterface;
 
-class Stack extends AbstractStack
+class Stack implements StackInterface
 {
+    protected array $data;
+
+    public function __construct()
+    {
+        $this->data = [];
+    }
+
+    public function size(): int
+    {
+        return count($this->data);
+    }
+
     public function push($element)
     {
         $this->data[] = $element;
@@ -13,7 +25,7 @@ class Stack extends AbstractStack
 
     public function pop()
     {
-        if (!$this->empty()) {
+        if (!$this->isEmpty()) {
             $top = $this->data[$this->size() - 1];
             unset($this->data[$this->size() - 1]);
             $this->data = array_values($this->data);
@@ -22,7 +34,7 @@ class Stack extends AbstractStack
         return null;
     }
 
-    public function empty(): bool
+    public function isEmpty(): bool
     {
         return $this->size() == 0;
     }
