@@ -26,7 +26,7 @@ for ($i = 0; $i < 10; $i++) {
 }
 
 try {
-    $set1->intersection($set2)->getData();
+    $set1->intersection($set2);
 } catch (\Exception $e) {
     echo $e->getMessage() . PHP_EOL;
 }

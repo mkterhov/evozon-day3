@@ -11,5 +11,7 @@ interface QueueInterface
 
     public function dequeue();
 
-    public function empty(): bool;
+    public function isEmpty(): bool;
+
+    public function top();
 }

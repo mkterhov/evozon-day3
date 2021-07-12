@@ -2,8 +2,21 @@
 
 namespace Implementations\Queue;
 
-class QueueFunctions extends AbstractQueue
+use Interfaces\QueueInterface;
+
+class QueueFunctions implements QueueInterface
 {
+    protected array $data;
+
+    public function __construct()
+    {
+        $this->data = [];
+    }
+
+    public function top()
+    {
+        return reset($this->data) ?? null;
+    }
 
     public function enqueue($element)
     {
@@ -12,13 +25,13 @@ class QueueFunctions extends AbstractQueue
 
     public function dequeue()
     {
-        if (!$this->empty()) {
+        if (!$this->isEmpty()) {
             return array_shift($this->data);
         }
         return false;
     }
 
-    public function empty(): bool
+    public function isEmpty(): bool
     {
         return empty($this->data);
     }

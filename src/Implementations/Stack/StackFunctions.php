@@ -2,8 +2,16 @@
 
 namespace Implementations\Stack;
 
-class StackFunctions extends AbstractStack
+use Interfaces\StackInterface;
+
+class StackFunctions implements StackInterface
 {
+    protected array $data;
+
+    public function __construct()
+    {
+        $this->data = [];
+    }
 
     public function push($element)
     {
@@ -12,13 +20,13 @@ class StackFunctions extends AbstractStack
 
     public function pop(): ?bool
     {
-        if (!$this->empty()) {
+        if (!$this->isEmpty()) {
             return array_pop($this->data);
         }
         return false;
     }
 
-    public function empty(): bool
+    public function isEmpty(): bool
     {
         return empty($this->data);
     }

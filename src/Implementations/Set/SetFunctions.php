@@ -5,8 +5,20 @@ namespace Implementations\Set;
 use Exceptions\ElementExistsException;
 use Interfaces\SetInterface;
 
-class SetFunctions extends AbstractSet
+class SetFunctions implements SetInterface
 {
+    protected array $data;
+
+    public function __construct(array $data = [])
+    {
+        $this->data = $data;
+    }
+
+    public function getData(): array
+    {
+        return $this->data;
+    }
+
     /**
      * @throws ElementExistsException
      */
@@ -23,12 +35,12 @@ class SetFunctions extends AbstractSet
         return in_array($element, $this->data);
     }
 
-    public function intersection(SetInterface $set): SetInterface
+    public function intersection($set): self
     {
         return new self(array_intersect($this->data, $set->data));
     }
 
-    public function union(SetInterface $set): SetInterface
+    public function union($set): self
     {
         $resultSet = array_values(array_unique(array_merge($this->data, $set->data)));
         return new self($resultSet);

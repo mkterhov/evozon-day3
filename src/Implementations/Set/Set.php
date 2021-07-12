@@ -5,16 +5,21 @@ namespace Implementations\Set;
 use Exceptions\ElementExistsException;
 use Interfaces\SetInterface;
 
-class Set extends AbstractSet
+class Set implements SetInterface
 {
+    protected array $data;
 
     public function __construct(array $data = [])
     {
-        parent::__construct($data);
+        $this->data = $data;
+    }
+
+    public function getData(): array
+    {
+        return $this->data;
     }
 
     /**
-     * @inheritDoc
      * @throws ElementExistsException
      */
     public function add($element): void
@@ -38,7 +43,7 @@ class Set extends AbstractSet
     /**
      * @throws ElementExistsException
      */
-    public function intersection(SetInterface $set): SetInterface
+    public function intersection($set): self
     {
         $newSet = new self();
         foreach ($this->data as $element) {
@@ -52,15 +57,15 @@ class Set extends AbstractSet
     /**
      * @throws ElementExistsException
      */
-    public function union(SetInterface $set): SetInterface
+    public function union($set): self
     {
-        $newSet = new self($this->intersection($set)->getData());
+        $newSet = new self($this->intersection($set)->data);
         foreach ($this->data as $element) {
             if ((!$set->contains($element))) {
                 $newSet->add($element);
             }
         }
-        foreach ($set->getData() as $element) {
+        foreach ($set->data as $element) {
             if ((!$this->contains($element))) {
                 $newSet->add($element);
             }

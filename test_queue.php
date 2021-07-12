@@ -16,6 +16,6 @@ for ($i = 0;$i <5;$i++) {
 //for ($i = 0;$i <200;$i++) {
 ////    echo "SIZE: ". $queue->size() . " ELEMENT TOP: " . $queue->top() ." ELEMENT: " . $queue->pop() . PHP_EOL;
 //}
-while (!$queue->empty()) {
+while (!$queue->isEmpty()) {
     echo $queue->dequeue() . PHP_EOL;
 }

@@ -9,5 +9,5 @@ interface StackInterface
 
     public function pop();
 
-    public function empty(): bool;
+    public function isEmpty(): bool;
 }

@@ -14,11 +14,9 @@ interface SetInterface extends \Countable
 
     public function contains($element): bool;
 
-    public function intersection(self $set): self;
+    public function intersection($set): SetInterface;
 
-    public function union(self $set): self;
-
-    public function getData();
+    public function union($set): SetInterface;
 
     public function count(): int;
 }
