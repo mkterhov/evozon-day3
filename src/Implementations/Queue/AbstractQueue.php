@@ -10,7 +10,7 @@ abstract class AbstractQueue implements QueueInterface
 
     public function __construct()
     {
-        $this->data = array();
+        $this->data = [];
     }
 
     public function size(): int

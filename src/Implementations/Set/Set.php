@@ -2,7 +2,7 @@
 
 namespace Implementations\Set;
 
-use Exceptions\ElementExists;
+use Exceptions\ElementExistsException;
 use Interfaces\SetInterface;
 
 class Set extends AbstractSet
@@ -15,12 +15,12 @@ class Set extends AbstractSet
 
     /**
      * @inheritDoc
-     * @throws ElementExists
+     * @throws ElementExistsException
      */
     public function add($element): void
     {
         if ($this->contains($element)) {
-            throw new ElementExists(self::ELEMENT_EXISTS);
+            throw new ElementExistsException('Element already exists in the set!');
         }
         $this->data[] = $element;
     }
@@ -36,11 +36,11 @@ class Set extends AbstractSet
     }
 
     /**
-     * @throws ElementExists
+     * @throws ElementExistsException
      */
     public function intersection(SetInterface $set): SetInterface
     {
-        $newSet = new Set();
+        $newSet = new self();
         foreach ($this->data as $element) {
             if ($this->contains($element) && $set->contains($element)) {
                 $newSet->add($element);
@@ -50,11 +50,11 @@ class Set extends AbstractSet
     }
 
     /**
-     * @throws ElementExists
+     * @throws ElementExistsException
      */
     public function union(SetInterface $set): SetInterface
     {
-        $newSet = new Set($this->intersection($set)->getData());
+        $newSet = new self($this->intersection($set)->getData());
         foreach ($this->data as $element) {
             if ((!$set->contains($element))) {
                 $newSet->add($element);

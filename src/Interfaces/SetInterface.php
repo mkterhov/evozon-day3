@@ -7,13 +7,9 @@ namespace Interfaces;
 //- sets intersection obtaining a third one with common values
 //- sets reunion obtaining a third one with all values
 
+
 interface SetInterface extends \Countable
 {
-    /**
-     * @throws ElementExists
-     * @param $element
-     * @return mixed
-     */
     public function add($element): void;
 
     public function contains($element): bool;
